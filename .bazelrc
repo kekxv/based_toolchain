@@ -16,8 +16,8 @@ build:remote_private                --spawn_strategy=remote
 build:remote_private                --remote_instance_name=fuse
 
 build:remote                        --config=remote_private
-build:remote                        --remote_executor="remote build server"
-build:remote                        --remote_cache="remote build server"
+#build:remote                        --remote_executor="remote build server"
+#build:remote                        --remote_cache="remote build server"
 
 
 build:linux-platform                --platforms=//toolchains:linux_x86_64
