@@ -1,0 +1,9 @@
+include("//toolchains/glibc-linux-gnu-x86_64:toolchains.MODULE.bazel")
+
+register_toolchains(
+    "//toolchains/glibc-linux-gnu-x86_64:toolchain",
+)
+
+register_execution_platforms(
+    "//toolchains:linux_x86_64",
+)
