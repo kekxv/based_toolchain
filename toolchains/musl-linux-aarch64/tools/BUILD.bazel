@@ -33,7 +33,7 @@ cc_tool_map(
 
 cc_tool(
     name = "gcc",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-gcc.br_real",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-gcc.br_real",
     data = [
         ":exec_platform_builtin_headers",
         ":exec_platform_multicall_support_files",
@@ -42,7 +42,7 @@ cc_tool(
 
 cc_tool(
     name = "g++",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-g++.br_real",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-g++.br_real",
     data = [
         ":exec_platform_builtin_headers",
         ":exec_platform_multicall_support_files",
@@ -51,8 +51,7 @@ cc_tool(
 
 cc_tool(
     name = "ld",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-ld",
-    # src = "@gcc-linux-x86_64//:bin/x86_64-linux-c++.br_real",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-ld",
     data = [
         ":exec_platform_linker_builtins",
         ":exec_platform_multicall_support_files",
@@ -61,27 +60,27 @@ cc_tool(
 
 cc_tool(
     name = "ar",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-ar",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-ar",
 )
 
 cc_tool(
     name = "objcopy",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-objcopy",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-objcopy",
 )
 
 cc_tool(
     name = "objdump",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-objdump",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-objdump",
 )
 
 cc_tool(
     name = "gcov",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-gcov",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-gcov",
 )
 
 cc_tool(
     name = "strip",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-strip",
+    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-strip",
 )
 
 #################################
@@ -94,18 +93,18 @@ cc_tool(
 
 alias(
     name = "exec_platform_builtin_headers",
-    actual = "@gcc-linux-x86_64//:builtin_headers",
+    actual = "@musl-linux-aarch64//:builtin_headers",
     visibility = ["//visibility:private"],
 )
 
 alias(
     name = "exec_platform_multicall_support_files",
-    actual = "@gcc-linux-x86_64//:multicall_support_files",
+    actual = "@musl-linux-aarch64//:multicall_support_files",
     visibility = ["//visibility:private"],
 )
 
 alias(
     name = "exec_platform_linker_builtins",
-    actual = "@gcc-linux-x86_64//:linker_builtins",
+    actual = "@musl-linux-aarch64//:linker_builtins",
     visibility = ["//visibility:private"],
 )

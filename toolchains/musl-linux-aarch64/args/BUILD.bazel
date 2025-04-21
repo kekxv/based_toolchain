@@ -25,10 +25,10 @@ cc_sysroot(
         "@rules_cc//cc/toolchains/actions:link_actions",
     ],
     data = [
-        "@gcc-linux-x86_64//:builtin_headers",
-        "@gcc-linux-x86_64//:sysroot",
+        "@musl-linux-aarch64//:builtin_headers",
+        "@musl-linux-aarch64//:sysroot",
     ],
-    sysroot = "@gcc-linux-x86_64//:sysroot",
+    sysroot = "@musl-linux-aarch64//:sysroot",
     visibility = ["//visibility:public"],
 )
 

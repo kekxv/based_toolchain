@@ -1,0 +1,38 @@
+load("@rules_cc//cc/toolchains:toolchain.bzl", "cc_toolchain")
+
+exports_files([
+    "toolchains.MODULE.bazel",
+    "gcc.BUILD.bazel",
+])
+
+cc_toolchain(
+    name = "gcc",
+    args = [
+        "//toolchains/musl-linux-aarch64/args:default_cpp_compile",
+        "//toolchains/musl-linux-aarch64/args:default_c_compile",
+        "//toolchains/musl-linux-aarch64/args:default_link",
+        "//toolchains/musl-linux-aarch64/args:linux_sysroot",
+        "//toolchains/args:no_absolute_paths_for_builtins",
+        "//toolchains/args:warnings",
+    ],
+    enabled_features = [
+        "@rules_cc//cc/toolchains/args:experimental_replace_legacy_action_config_features",
+    ],
+    known_features = ["@rules_cc//cc/toolchains/args:experimental_replace_legacy_action_config_features"],
+    tool_map = "//toolchains/musl-linux-aarch64/tools:all_tools",
+)
+
+toolchain(
+    name = "toolchain",
+    exec_compatible_with = [
+        "@platforms//os:linux",
+        "@platforms//cpu:x86_64",
+    ],
+    target_compatible_with = [
+        "@platforms//os:linux",
+        "@platforms//cpu:aarch64",
+    ],
+    toolchain = ":gcc",
+    toolchain_type = "@bazel_tools//tools/cpp:toolchain_type",
+    visibility = ["//visibility:public"],
+)

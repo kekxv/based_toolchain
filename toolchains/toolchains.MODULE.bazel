@@ -1,9 +1,14 @@
 include("//toolchains/glibc-linux-gnu-x86_64:toolchains.MODULE.bazel")
 
+include("//toolchains/musl-linux-aarch64:toolchains.MODULE.bazel")
+
 register_toolchains(
     "//toolchains/glibc-linux-gnu-x86_64:toolchain",
+    "//toolchains/musl-linux-aarch64:toolchain",
 )
 
 register_execution_platforms(
+    "//toolchains:macos_arm64",
     "//toolchains:linux_x86_64",
+    "//toolchains:linux_aarch64",
 )

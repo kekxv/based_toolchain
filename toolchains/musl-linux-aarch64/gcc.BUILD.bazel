@@ -27,30 +27,28 @@ directory(
     name = "toolchain_root",
     srcs = glob([
         "lib/**",
-        "x86_64-buildroot-linux-gnu/include/c++/12.2.0/**/*",
-        #        "x86_64-buildroot-linux-gnu/include/c++/13.3.0/**/*",
-        "x86_64-buildroot-linux-gnu/include/**",
+        "aarch64-buildroot-linux-musl/include/c++/12.3.0/**/*",
+        "aarch64-buildroot-linux-musl/include/**",
     ]),
 )
 
 subdirectory(
     name = "lib-gcc-include",
     parent = ":toolchain_root",
-    path = "x86_64-buildroot-linux-gnu/include",
+    path = "aarch64-buildroot-linux-musl/include",
 )
 
 subdirectory(
-    name = "include-x86_64-buildroot-linux-gnu",
+    name = "include-aarch64-buildroot-linux-musl",
     parent = ":toolchain_root",
-    path = "lib/gcc/x86_64-buildroot-linux-gnu/12.2.0/include",
-    #    path = "lib/gcc/x86_64-buildroot-linux-gnu/13.3.0/include",
+    path = "lib/gcc/aarch64-buildroot-linux-musl/12.3.0/include",
 )
 
 filegroup(
     name = "builtin_headers",
     srcs = [
         ":lib-gcc-include",
-        ":include-x86_64-buildroot-linux-gnu",
+        ":include-aarch64-buildroot-linux-musl",
     ],
 )
 
@@ -79,12 +77,12 @@ filegroup(
 directory(
     name = "root",
     srcs = glob([
-        "x86_64-buildroot-linux-gnu/sysroot/**/*",
+        "aarch64-buildroot-linux-musl/sysroot/**/*",
     ]),
 )
 
 subdirectory(
     name = "sysroot",
     parent = ":root",
-    path = "x86_64-buildroot-linux-gnu/sysroot",
+    path = "aarch64-buildroot-linux-musl/sysroot",
 )

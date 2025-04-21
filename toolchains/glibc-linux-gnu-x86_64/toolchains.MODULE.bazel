@@ -7,4 +7,7 @@ http_archive(
     strip_prefix = "",
     type = "tar.bz2",
     url = "https://github.com/ClangTools/clang-binaries/releases/download/linux-gcc12-x86_64-buildroot-2022.11.3-glibc.2.36/linux-gcc12-x86_64-buildroot-2022.11.3-gnu-glibc_2.36.tar.bz2",
+    #    integrity = "sha256-kygjypo+Bn5+KimBCmZtIMnMW7VQ3pR/aHnjis4aqVU=",
+    #    strip_prefix = "x86-64--glibc--stable-2024.05-1",
+    #    urls = ["https://toolchains.bootlin.com/downloads/releases/toolchains/x86-64/tarballs/x86-64--glibc--stable-2024.05-1.tar.xz"],
 )

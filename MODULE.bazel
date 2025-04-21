@@ -1,5 +1,11 @@
 bazel_dep(name = "platforms", version = "0.0.10")
 bazel_dep(name = "bazel_skylib", version = "1.7.1")
 bazel_dep(name = "rules_cc", version = "0.1.1")
+git_override(
+    module_name = "rules_cc",
+    commit = "15c158886752ceddb4d6bac17e7b5a74feab53b5",
+    init_submodules = True,
+    remote = "https://github.com/bazelbuild/rules_cc",
+)
 
 include("//toolchains:toolchains.MODULE.bazel")

@@ -1,0 +1,10 @@
+http_archive = use_repo_rule("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+
+http_archive(
+    name = "musl-linux-aarch64",
+    build_file = "//toolchains/musl-linux-aarch64:gcc.BUILD.bazel",
+    integrity = "sha256-NVQ5GproLMH+NaarDJ76NKW6xUdLbVJ0dJlyVuFIwpc=",
+    strip_prefix = "aarch64--musl--stable-2023.11-1",
+    type = "tar.bz2",
+    url = "https://toolchains.bootlin.com/downloads/releases/toolchains/aarch64/tarballs/aarch64--musl--stable-2023.11-1.tar.bz2",
+)

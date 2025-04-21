@@ -21,7 +21,9 @@ build:remote                        --config=remote_private
 
 
 build:linux-platform                --platforms=//toolchains:linux_x86_64
+build:linux-aarch64-platform        --platforms=//toolchains:linux_aarch64
 
 #build                               --config=remote
 build                               --config=linux-platform
+#build                               --config=linux-aarch64-platform
 
