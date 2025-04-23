@@ -52,7 +52,6 @@ cc_tool(
 cc_tool(
     name = "ld",
     src = "@gcc-linux-x86_64//:bin/x86_64-linux-ld",
-    # src = "@gcc-linux-x86_64//:bin/x86_64-linux-c++.br_real",
     data = [
         ":exec_platform_linker_builtins",
         ":exec_platform_multicall_support_files",
