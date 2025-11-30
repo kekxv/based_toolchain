@@ -17,6 +17,17 @@ load("@rules_cc//cc/toolchains:tool_map.bzl", "cc_tool_map")
 
 licenses(["notice"])
 
+exports_files([
+    "wrapper/ld.sh",
+])
+
+filegroup(
+    name = "toolchain_wrapper",
+    srcs = [
+        "wrapper/ld.sh",
+    ],
+)
+
 cc_tool_map(
     name = "all_tools",
     tools = {
@@ -37,6 +48,7 @@ cc_tool(
     data = [
         ":exec_platform_builtin_headers",
         ":exec_platform_multicall_support_files",
+        ":toolchain_wrapper",
     ],
 )
 
@@ -46,15 +58,17 @@ cc_tool(
     data = [
         ":exec_platform_builtin_headers",
         ":exec_platform_multicall_support_files",
+        ":toolchain_wrapper",
     ],
 )
 
 cc_tool(
     name = "ld",
-    src = "@gcc-linux-x86_64//:bin/x86_64-linux-ld",
+    src = ":wrapper/ld.sh",
     data = [
         ":exec_platform_linker_builtins",
         ":exec_platform_multicall_support_files",
+        ":toolchain_wrapper",
     ],
 )
 

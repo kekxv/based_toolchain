@@ -17,6 +17,21 @@ load("@rules_cc//cc/toolchains:tool_map.bzl", "cc_tool_map")
 
 licenses(["notice"])
 
+exports_files([
+    "wrapper/ld.sh",
+    "wrapper/gcc.sh",
+    "wrapper/ar.sh",
+])
+
+filegroup(
+    name = "toolchain_wrapper",
+    srcs = [
+        "wrapper/ar.sh",
+        "wrapper/gcc.sh",
+        "wrapper/ld.sh",
+    ],
+)
+
 cc_tool_map(
     name = "all_tools",
     tools = {
@@ -33,34 +48,44 @@ cc_tool_map(
 
 cc_tool(
     name = "gcc",
-    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-gcc.br_real",
+    #src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-gcc.br_real",
+    src = ":wrapper/gcc.sh",
     data = [
         ":exec_platform_builtin_headers",
+        ":exec_platform_linker_builtins",
         ":exec_platform_multicall_support_files",
+        ":toolchain_wrapper",
     ],
 )
 
 cc_tool(
     name = "g++",
-    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-g++.br_real",
+    # src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-g++.br_real",
+    src = ":wrapper/gcc.sh",
     data = [
         ":exec_platform_builtin_headers",
+        ":exec_platform_linker_builtins",
         ":exec_platform_multicall_support_files",
+        ":toolchain_wrapper",
     ],
 )
 
 cc_tool(
     name = "ld",
-    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-ld",
+    #src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-ld",
+    src = ":wrapper/ld.sh",
     data = [
+        ":exec_platform_builtin_headers",
         ":exec_platform_linker_builtins",
         ":exec_platform_multicall_support_files",
+        ":toolchain_wrapper",
     ],
 )
 
 cc_tool(
     name = "ar",
-    src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-ar",
+    #src = "@musl-linux-aarch64//:bin/aarch64-buildroot-linux-musl-ar",
+    src = ":wrapper/ar.sh",
 )
 
 cc_tool(

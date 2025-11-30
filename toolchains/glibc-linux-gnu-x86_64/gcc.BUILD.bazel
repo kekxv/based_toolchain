@@ -27,8 +27,6 @@ directory(
     name = "toolchain_root",
     srcs = glob([
         "lib/**",
-        "x86_64-buildroot-linux-gnu/include/c++/12.2.0/**/*",
-        #        "x86_64-buildroot-linux-gnu/include/c++/13.3.0/**/*",
         "x86_64-buildroot-linux-gnu/include/**",
     ]),
 )

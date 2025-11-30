@@ -1,3 +1,5 @@
+load("@bazel_skylib//lib:selects.bzl", "selects")
+
 exports_files(["toolchains.MODULE.bazel"])
 
 exec_properties = {
